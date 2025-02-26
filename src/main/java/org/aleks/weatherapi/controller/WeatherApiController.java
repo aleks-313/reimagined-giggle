@@ -14,7 +14,7 @@ import org.springframework.web.client.HttpClientErrorException;
 @RestController
 public class WeatherApiController {
 
-    WeatherClient weatherClient;
+    final WeatherClient weatherClient;
 
     @Autowired
     public WeatherApiController(WeatherClient weatherClient) {

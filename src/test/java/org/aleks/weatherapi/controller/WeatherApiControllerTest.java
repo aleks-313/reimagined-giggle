@@ -8,7 +8,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -31,7 +30,7 @@ public class WeatherApiControllerTest {
     @MockBean
     private WeatherClient weatherClient;
 
-    Weather mockWeather = new Weather("Sofia", "Sunny" ,new ArrayList<>(List.of(1.1, 2.2)), new ArrayList<>(List.of(3.4, 5.2)), new ArrayList<>(List.of(2.1, 7.2)), new ArrayList<>(List.of(12.1, 24.2)));
+    final Weather mockWeather = new Weather("Sofia", "Sunny" ,new ArrayList<>(List.of(1.1, 2.2)), new ArrayList<>(List.of(3.4, 5.2)), new ArrayList<>(List.of(2.1, 7.2)), new ArrayList<>(List.of(12.1, 24.2)));
 
     @Test
     void weatherApiControllerReturnsOKResponse() throws Exception {
