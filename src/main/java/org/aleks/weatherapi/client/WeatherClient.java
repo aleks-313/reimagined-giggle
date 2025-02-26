@@ -6,19 +6,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.aleks.weatherapi.model.Weather;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class WeatherClient {
     @Value("${weather.api.key}")
     private String apiKey;
+    @Value("${weather.api.base.url}")
+    private String baseURL;
 
     public Weather getWeatherForCity(String city) {
         RestClient restClient = RestClient.builder()
-                .baseUrl("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" +
-                        city + "/?key=" + apiKey)
+                .baseUrl(baseURL + city + "/?key=" + apiKey)
                 .build();
 
         String jsonResponse = restClient.get().retrieve().body(String.class);
